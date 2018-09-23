@@ -33,6 +33,11 @@ class Album extends Component {
             <col id="song-duration-column" />
           </colgroup>
           <tbody>
+            {
+              this.state.album.songs.map( (song, index) =>
+                <tr>{index + 1}. <b>{song.title}</b> (duration: {song.duration} seconds)</tr>
+              )
+            }
           </tbody>
         </table>
       </section>
