@@ -11,9 +11,12 @@ class Album extends Component {
      });
 
      this.state = {
-      album: album,
-      currentSong: album.songs[0],
-      isPlaying: false
+       album: album,
+       currentSong: album.songs[7],
+       currentTime: 0,
+       duration: album.songs[0].duration,
+       isPlaying: false,
+       currentHover: null,
      };
 
      this.audioElement = document.createElement('audio');
@@ -40,10 +43,33 @@ class Album extends Component {
     if (this.state.isPlaying && isSameSong) {
        this.pause();
      } else {
-       if (!isSameSong) { this.setSong(song); }  
+       if (!isSameSong) { this.setSong(song); }
        this.play();
      }
-  }
+   }
+
+   handleMouseEnter(song) {
+      this.setState({currentHover : song})
+   }
+
+   handleMouseLeave() {
+    this.setState({currentHover : null})
+   }
+
+   buttonDisplay(song, index) {
+     if(this.state.currentSong === song && !this.state.isPlaying){
+       return <ion-icon name="play"></ion-icon>
+     }
+     if(this.state.currentSong === song){
+       return <ion-icon name="pause"></ion-icon>
+     }
+     else if (this.state.currentHover === song) {
+       return <ion-icon name="play"></ion-icon>
+     }
+     else {
+       return index
+     }
+   }
 
   render () {
     return(
@@ -64,10 +90,14 @@ class Album extends Component {
            </colgroup>
            <tbody>
              {this.state.album.songs.map( (song, index) =>
-               <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-                <td>{index + 1}</td>
-                <td>{song.title}</td>
-                <td>{song.duration}</td>
+               <tr className="song"
+               key={index}
+               onClick={() => this.handleSongClick(song)}
+               onMouseEnter={() => this.handleMouseEnter(song)}
+               onMouseLeave={() => this.handleMouseLeave()} >
+                  <td>{this.buttonDisplay(song, index)}</td>
+                  <td>{song.title}</td>
+                  <td>{song.duration}</td>
                </tr>
              )}
           </tbody>
