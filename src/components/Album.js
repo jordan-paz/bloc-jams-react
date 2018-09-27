@@ -67,7 +67,7 @@ class Album extends Component {
        return <ion-icon name="play"></ion-icon>
      }
      else {
-       return index
+       return index + 1
      }
    }
 
