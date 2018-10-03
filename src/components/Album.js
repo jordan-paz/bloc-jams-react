@@ -15,7 +15,7 @@ class Album extends Component {
      this.state = {
        album: album,
        currentSong: album.songs[7],
-       currentTime: 0,
+       currentTime: null,
        duration: album.songs[0].duration,
        volume: 0,
        isPlaying: false,
@@ -157,7 +157,7 @@ class Album extends Component {
                   currentSong={this.state.currentSong}
                   displayCurrentTime={this.formatTime(this.audioElement.currentTime)}
                   displayDuration={this.formatTime(this.audioElement.duration)}
-                  currentTime={this.audioElement.currentTime}
+                  currentTime={this.formatTime(this.audioElement.currentTime)}
                   duration={this.formatTime(this.audioElement.duration)}
                   volume={this.audioElement.volume}
                   handleSongClick={() => this.handleSongClick(this.state.currentSong)}
