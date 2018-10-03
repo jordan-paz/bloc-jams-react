@@ -9,14 +9,15 @@ class Library extends Component {
   }
   render () {
     return (
-        <div class = "container is-fluid">
+        <div className = "container is-fluid">
           <div className="hero is-dark">
             <h1 className="title has-text-centered">Library</h1>
         </div>
-        {
+        <div className="box has-background-white-ter">
+          {
             this.state.albums.map( (album, index) =>
-              <div className="box has-background-white-ter">
-              <Link to={`/album/${album.slug}`} key={index}>
+
+              <Link className="box has-background-white-ter" to={`/album/${album.slug}`} key={index}>
                 <div className="media">
                   <div className="media-left">
                     <img className="image is-128x128" src={album.albumCover} alt={album.title} />
@@ -28,9 +29,9 @@ class Library extends Component {
                   </div>
                 </div>
               </Link>
-              </div>
-             )
+            )
            }
+        </div>
       </div>
     );
   }

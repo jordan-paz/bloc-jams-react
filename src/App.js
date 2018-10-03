@@ -18,13 +18,13 @@ class App extends Component {
     <div>
       <div className="hero is-primary">
         <div className="hero-body">
-            <h1 class="title is-size-1 has-text-centered">Bloc Jams</h1>
-            <h2 class="subtitle has-text-centered">Turn the Music Up!</h2>
+            <h1 className="title is-size-1 has-text-centered">Bloc Jams</h1>
+            <h2 className="subtitle has-text-centered">Turn the Music Up!</h2>
         </div>
         <div className="tabs is-centered">
           <ul>
-            <li><a><Link to='/'>Landing</Link></a></li>
-            <li><a><Link to='/library'>Library</Link></a></li>
+            <li><Link to='/'>Landing</Link></li>
+            <li><Link to='/library'>Library</Link></li>
           </ul>
         </div>
       </div>
